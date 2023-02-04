@@ -5,8 +5,8 @@ FROM python:3.9.16-bullseye
 WORKDIR /app
 
 # Install pip
-RUN apk update
-RUN apk add py-pip git
+RUN apt-get update
+RUN apt-get install py-pip git
 
 # Copy the requirements file to the container
 COPY ./src/requirements.txt ./
