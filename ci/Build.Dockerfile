@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Install pip
 RUN apt-get update
-RUN apt-get install -y python3-pip git
+RUN apt-get install -y python3-pip git libav-tools
 
 # Copy the requirements file to the container
 COPY src/requirements.txt .
@@ -21,7 +21,7 @@ RUN pip3 install -U git+https://git@github.com/facebookresearch/encodec#egg=enco
 
 
 # Set the environment variable for Flask
-ENV FLASK_APP=run.py
+ENV FLASK_APP=app.py
 
 # Expose the default Flask port
 EXPOSE 5000
