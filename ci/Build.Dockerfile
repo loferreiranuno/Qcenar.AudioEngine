@@ -19,6 +19,7 @@ RUN pip3 install -U encodec
 RUN pip3 install -U git+https://git@github.com/facebookresearch/encodec#egg=encodec
 # RUN pip3 install .
 
+COPY ./src .
 
 # Set the environment variable for Flask
 ENV FLASK_APP=app.py
