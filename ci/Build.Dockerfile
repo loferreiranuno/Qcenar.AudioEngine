@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Install pip
 RUN apt-get update
-RUN apt-get install py-pip git
+RUN apt-get install -y python3-pip git
 
 # Copy the requirements file to the container
 COPY ./src/requirements.txt ./
