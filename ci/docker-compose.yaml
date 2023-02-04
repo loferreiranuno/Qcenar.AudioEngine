@@ -11,9 +11,7 @@ services:
         ports:
           - 6061:5000
         volumes:
-          - qcenar-audio-engine-data:/data  
-        environment:
-          SearchEngine__DataFolder: '/data' 
+          - qcenar-audio-engine-data:/data
         labels:          
           - traefik.enable=true
           - traefik.http.middlewares.qcenar-audio-engine-redirect-websecure.redirectscheme.scheme=https
