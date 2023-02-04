@@ -8,7 +8,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y python3-pip
 
 # Copy the requirements file to the container
-COPY ./ci/requirements.txt .
+COPY ./src/requirements.txt .
 
 # Install the dependencies
 RUN pip3 install -r requirements.txt
@@ -19,10 +19,10 @@ RUN pip3 install -U git+https://git@github.com/facebookresearch/encodec#egg=enco
 RUN pip3 install .
 
 # Copy the application code to the container
-COPY . .
+COPY ./src .
 
 # Set the environment variable for Flask
-ENV FLASK_APP=app.py
+ENV FLASK_APP=run.py
 
 # Expose the default Flask port
 EXPOSE 5000
