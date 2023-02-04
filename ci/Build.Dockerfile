@@ -1,5 +1,5 @@
 # Use an official Python image as the base image
-FROM python:alpine3.17
+FROM python:3.9.16-bullseye
 
 # Set the working directory in the container
 WORKDIR /app
@@ -9,7 +9,7 @@ RUN apk update
 RUN apk add py-pip git
 
 # Copy the requirements file to the container
-COPY ./src/requirements.txt .
+COPY ./src/requirements.txt ./
 
 # Install the dependencies
 RUN pip3 install -r requirements.txt
