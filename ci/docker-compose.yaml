@@ -1,0 +1,33 @@
+version: "3.1"
+volumes:
+  qcenar-audio-engine-data:
+services:
+    qcenar-audio-engine:
+        container_name: qcenar.audio.engine
+        image: ${IMAGE}
+        restart: always
+        networks:
+          - web
+        ports:
+          - 6061:5000
+        volumes:
+          - qcenar-audio-engine-data:/data  
+        environment:
+          SearchEngine__DataFolder: '/data' 
+        labels:          
+          - traefik.enable=true
+          - traefik.http.middlewares.qcenar-audio-engine-redirect-websecure.redirectscheme.scheme=https
+          - traefik.backend=qcenar-audio-engine          
+          - traefik.http.routers.qcenar-audio-engine.middlewares=qcenar-audio-engine-redirect-websecure
+          - traefik.http.routers.qcenar-audio-engine.entrypoints=web
+          - traefik.http.routers.qcenar-audio-engine.rule=Host(`audio.api.qcenar.com`)          
+          - traefik.http.routers.qcenar-audio-engine-websecure.rule=Host(`audio.api.qcenar.com`)
+          - traefik.http.routers.qcenar-audio-engine-websecure.entrypoints=websecure
+          - traefik.http.routers.qcenar-audio-engine-websecure.tls.certresolver=le
+          - traefik.http.routers.qcenar-audio-engine-websecure.tls=true
+          - traefik.docker.network=web          
+networks:
+  web:
+    external: true
+  internal:
+    external: false
