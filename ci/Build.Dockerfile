@@ -5,7 +5,8 @@ FROM python:alpine3.17
 WORKDIR /app
 
 # Install pip
-RUN apk update && apk install -y python3-pip  git
+RUN apk update
+RUN apk add python3-pip git
 
 # Copy the requirements file to the container
 COPY ./src/requirements.txt .
