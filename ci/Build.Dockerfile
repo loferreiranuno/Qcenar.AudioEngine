@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Install pip
 RUN apk update
-RUN apk add python3-pip git
+RUN apk add py-pip git
 
 # Copy the requirements file to the container
 COPY ./src/requirements.txt .
